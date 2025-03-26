@@ -4,14 +4,16 @@ import {createBrowserRouter,
 import './App.css'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage';
-import ArticlesListPage from './pages/ArticlesList';
+import ArticlesListPage from './pages/ArticlesListPage';
 import ArticlePage from './pages/ArticlePage';
 import Layout from './Layout';
+import NotFoundPage from './pages/NotFoundPage';
 
 
 const routes = [{
   path: '/',
   element: <Layout />,
+  errorElement: <NotFoundPage />, //does this when error happens so it work for /articles/(random_bs)
   children: [{
     path: '/',
     element: <HomePage />
@@ -22,7 +24,7 @@ const routes = [{
       path: '/articles',
       element: <ArticlesListPage/>
     }, {
-      path: '/articles/individual',
+      path: '/articles/:name', // -> /articles/learn-react
       element: <ArticlePage/>
   
     }]
